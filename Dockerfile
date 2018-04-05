@@ -9,14 +9,16 @@
 
 FROM ubuntu
 RUN apt-get update && apt-get install
-RUN apt-get install -y git
+#RUN apt-get install -y git
 RUN apt-get install -y maven
 RUN apt-get install -y openjdk-8-jdk
 
 WORKDIR /Git
-RUN git clone https://github.com/spring-guides/gs-rest-service
+ADD . /Git
+RUN ls -ltr
+#RUN git clone https://github.com/spring-guides/gs-rest-service
 
-WORKDIR /Git/gs-rest-service/complete
+WORKDIR /Git/complete
 RUN mvn package
 
 WORKDIR /Git/gs-rest-service/complete/target
